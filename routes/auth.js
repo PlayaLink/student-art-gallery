@@ -28,8 +28,8 @@ router.post('/register', function(req, res){
             res.redirect('back');
         } else {
             passport.authenticate('local')(req, res, function(){
-                req.flash('success', "Welcome to YelpCamp, " + user.username + "!");
-                res.redirect('/artpieces');   
+                req.flash('success', "Welcome to the Student Gallery, " + user.username + "!");
+                res.redirect('/artpieces');
             });
         }
     });
@@ -46,11 +46,11 @@ router.get('/login', function(req, res){
 //handle login logic
 
 
-router.post('/login', passport.authenticate('local', 
+router.post('/login', passport.authenticate('local',
     {
         successRedirect: '/artpieces',
         failureRedirect: '/login',
-        failureFlash: true 
+        failureFlash: true
             // message: 'Password or username are incorrect.'
     }), function(req, res){
 });
@@ -66,4 +66,3 @@ router.get('/logout', function(req, res){
 
 
 module.exports = router;
-

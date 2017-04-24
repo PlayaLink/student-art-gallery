@@ -8,10 +8,9 @@ var express     = require("express"),
     Artpiece  = require("./models/artpiece"),
     Comment     = require("./models/comment"),
     User        = require("./models/user"),
-    seedDB      = require("./seeds"),
     methodOverride = require('method-override');
 
-    
+
 //requring routes
 var commentsRoutes    = require("./routes/comments"),
     artpiecesRoutes = require("./routes/artpieces"),
@@ -19,7 +18,7 @@ var commentsRoutes    = require("./routes/comments"),
 
 var url = process.env.DATABASEURL || 'mongodb://localhost/student_gallery';
 mongoose.connect(url);
-// mongoose.connect("mongodb://playalink:MoGonzo2015!@ds029426.mlab.com:29426/yelpcamp");
+// mongoose.connect("mongodb://<dbuser>:<dbpassword>@ds133450.mlab.com:33450/student-art-gallery");
 
 app.use(bodyParser.urlencoded({extended: true}));
 app.set("view engine", "ejs");
@@ -51,6 +50,8 @@ app.use("/", indexRoutes);
 app.use("/artpieces", artpiecesRoutes);
 app.use("/artpieces/:id/comments", commentsRoutes);
 
-app.listen(process.env.PORT, process.env.IP, function(){
+
+console.log(process.env.PORT);
+app.listen(3000, function(){
    console.log("Server is running...");
 });

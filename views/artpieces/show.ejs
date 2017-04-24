@@ -4,7 +4,7 @@
     <div class="row">
         <!--Left side bar-->
         <!--<div class="col-md-3">-->
-        <!--    <p class='lead'>Yelp Camp</p>-->
+        <!--    <p class='lead'>Student Gallery</p>-->
         <!--    <div class='list-group'>-->
         <!--        <li class='list-group-item active'>Info 1</li>-->
         <!--        <li class='list-group-item'>Info 2</li>-->
@@ -31,7 +31,7 @@
                     </form>
                 <% } %>
             </div>
-            
+
         <!--Comments section-->
             <div class='well'>
                 <div class='text-right'>
@@ -46,7 +46,7 @@
                             <p>
                                 <%= comment.text %>
                             </p>
-                            
+
                 <!--Edit/delete comment-->
                             <% if(currentUser && comment.author.id.equals(currentUser._id)){ %>
                                 <div class='edit-delete-buttons'
@@ -59,24 +59,24 @@
                                     <br>
                                 </div>
                             <% } %>
-                            
+
                         </div>
                     </div>
-                    
-                <% }) %> 
+
+                <% }) %>
             </div>
         </div>
-        
+
 
     </div>
-</div>           
+</div>
 
-    
-            
-     
-    
 
-    
+
+
+
+
+
 
 
 <% include ../partials/footer %>

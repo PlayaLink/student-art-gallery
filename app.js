@@ -51,7 +51,7 @@ app.use("/artpieces", artpiecesRoutes);
 app.use("/artpieces/:id/comments", commentsRoutes);
 
 
-console.log(process.env.PORT);
-app.listen(3000, function(){
+var port = process.env.PORT || 3000;
+app.listen(port, function(){
    console.log("Server is running...");
 });

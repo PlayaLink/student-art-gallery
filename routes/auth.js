@@ -21,14 +21,15 @@ router.get('/register', function(req, res){
 //handle signup logic
 
 router.post('/register', function(req, res){
-    var newUser = new User({username: req.body.username});
+    var newUser = new User({username: req.body.username, firstName: req.body.firstName, lastName: req.body.lastName});
+    console.log(newUser);
     User.register(newUser, req.body.password, function(err, user){
         if(err){
             req.flash('error', err.message);
             res.redirect('back');
         } else {
             passport.authenticate('local')(req, res, function(){
-                req.flash('success', "Welcome to the Student Gallery, " + user.username + "!");
+                req.flash('success', "Welcome to the Student Gallery, " + user.firstName + "!");
                 res.redirect('/artpieces');
             });
         }

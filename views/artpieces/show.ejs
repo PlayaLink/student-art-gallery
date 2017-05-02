@@ -15,58 +15,63 @@
         <div class="col-md-9">
             <div class='thumbnail'>
                 <img class='img-responsive' src="<%= artpiece.url %>">
-                <div class='caption-full'>
-                    <h4 class='pull-right'></h4>
-                    <h4><%= artpiece.name %></h4>
-                    <p><em>Submitted by <%= artpiece.author.username %></em></p>
-                    <p><%- artpiece.description %></p>
-                </div>
-            </div>
-        <!--Edit/delete post-->
-            <div>
-                <% if(currentUser && artpiece.author.id.equals(currentUser._id)){ %>
-                    <a class='btn btn-warning btn-sm' href='/artpieces/<%= artpiece._id %>/edit'>Edit post</a>
-                    <form style='display: inline' action="/artpieces/<%= artpiece._id %>?_method=DELETE" method="POST">
-                        <button class='btn btn-danger btn-sm' onclick="return confirm('Are you sure you want to delete this artpiece?')">Delete artpiece</button>
-                    </form>
-                <% } %>
-            </div>
-
-        <!--Comments section-->
-            <div class='well'>
-                <div class='text-right'>
-                    <a class='btn btn-success' href='/artpieces/<%= artpiece._id %>/comments/new'>Add Comment</a>
-                </div>
-                <hr>
-                <% artpiece.comments.forEach(function(comment){ %>
-                    <div class='row'>
-                        <div class='col-md-12'>
-                            <strong><%= comment.author.username %></strong>
-                            <span class='pull-right'>10 days ago</span>
-                            <p>
-                                <%= comment.text %>
-                            </p>
-
-                <!--Edit/delete comment-->
-                            <% if(currentUser && comment.author.id.equals(currentUser._id)){ %>
-                                <div class='edit-delete-buttons'
-                                    <p>
-                                        <a class='btn btn-warning btn-xs' href='/artpieces/<%= artpiece._id %>/comments/<%=comment._id %>/edit'>Edit comment</a>
-                                        <form style='display: inline' action='/artpieces/<%= artpiece._id %>/comments/<%=comment._id %>?_method=DELETE' method='POST'>
-                                            <button class='btn btn-danger btn-xs' onclick="return confirm('Are you sure you want to delete this comment?')">Delete comment</button>
-                                        </form>
-                                    </p>
-                                    <br>
-                                </div>
-                            <% } %>
-
-                        </div>
+                <div class='caption-full post-caption'>
+                <!--Edit/delete post-->
+                    <div class="pull-right">
+                        <% if(currentUser && artpiece.author.id.equals(currentUser._id)) {%>
+                            <a class='btn btn-warning btn-sm' href='/artpieces/<%= artpiece._id %>/edit'>Edit post</a>
+                            <form style='display: inline' action="/artpieces/<%= artpiece._id %>?_method=DELETE" method="POST">
+                                <button class='btn btn-danger btn-sm' onclick="return confirm('Are you sure you want to delete this artpiece?')">Delete</button>
+                            </form>
+                        <% } %>
+                        <% if(currentUser && !artpiece.author.id.equals(currentUser._id)) {%>
+                            <p><em>Submitted by <%= artpiece.author.username %></em></p>
+                        <% } %>
                     </div>
 
-                <% }) %>
+                    <h4><%= artpiece.name %></h4>
+
+                    <p><%- artpiece.description %></p>
+
+                </div>
             </div>
         </div>
 
+    <!--Comments section-->
+        <div class='col-md-3'>
+          <h4 class="text-center">Comments</h4>
+          <div class="comments-sidebar well">
+            <% artpiece.comments.forEach(function(comment){ %>
+                <div class='row'>
+                    <div class='col-md-12'>
+                        <strong><%= comment.author.username %></strong>
+                        <span class='pull-right'>10 days ago</span>
+                        <p>
+                            <%= comment.text %>
+                        </p>
+
+            <!--Edit/delete comment-->
+                        <% if(currentUser && comment.author.id.equals(currentUser._id)){ %>
+                            <div class='edit-delete-buttons'
+                                <p>
+                                    <a class='btn btn-warning btn-xs' href='/artpieces/<%= artpiece._id %>/comments/<%=comment._id %>/edit'>Edit comment</a>
+                                    <form style='display: inline' action='/artpieces/<%= artpiece._id %>/comments/<%=comment._id %>?_method=DELETE' method='POST'>
+                                        <button class='btn btn-danger btn-xs' onclick="return confirm('Are you sure you want to delete this comment?')">Delete</button>
+                                    </form>
+                                </p>
+                                <br>
+                            </div>
+                        <% } %>
+
+                    </div>
+                </div>
+            <% }) %>
+            <!-- Add comment button -->
+            <div class='text-center'>
+                <a class='btn btn-success' href='/artpieces/<%= artpiece._id %>/comments/new'>Add Comment</a>
+            </div>
+          </div>
+        </div>
 
     </div>
 </div>

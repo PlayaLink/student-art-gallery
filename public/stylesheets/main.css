@@ -1,5 +1,7 @@
 .thumbnail img {
     width: 100%;
+    display: inline-block;
+    overflow: hidden;
 }
 
 .thumbnail {

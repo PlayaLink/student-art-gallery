@@ -7,6 +7,7 @@ var userSchema = new mongoose.Schema({
     password: String
 });
 
+//add passportLocalMongoose plugin to handle salting and hasing of user passwords
 userSchema.plugin(passportLocalMongoose);
 
 module.exports = mongoose.model('User', userSchema);

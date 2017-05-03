@@ -1,12 +1,18 @@
-.thumbnail img {
-    width: 100%;
-    display: inline-block;
-    overflow: hidden;
+.thumbnail.thumbnail-detail{
+  display: block;
+  position: relative;
+  margin-bottom: 2px;
+  overflow: hidden;
+  max-width: 800px;
+  margin: 2px auto !important;
 }
 
-.thumbnail {
-    padding: 0px;
+.thumbnail.thumbnail-detail img{
+    width: 800px;
+    height: 450px;
+    object-fit: cover;
 }
+
 
 .thumbnail .caption-full {
     padding: 9px;

@@ -4,15 +4,12 @@
 
     <header class="jumbotron">
         <h1>Student Gallery</h1>
-        <p>Click on an artpiece for more information</p>
+        <p>A place where students of <a href="http://www.katherineengland.com/">Katherine's Studio</a> can post pictures of their art and receive feedback from other artists.</p>
         <button><a href="/artpieces/new">Add New Artpiece</a></button>
     </header>
 
 
-    <div class="row text-center" style="display: flex; flex-wrap:wrap;">
-        <div class="col-lg-12">
-            <h4>Our Most Popular Sites</h4>
-        </div>
+    <div class="row text-center">
 
         <% artpieces.forEach(function(artpiece){ %>
             <div class="col-md-3 col-sm-6">

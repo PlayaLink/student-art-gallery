@@ -11,7 +11,7 @@ router.get('/', function(req, res){
         if(err){
             console.log(err);
         } else {
-            res.render('artpieces/index', {artpieces: allArtpieces});
+            res.render('artpieces/gallery', {artpieces: allArtpieces});
         }
     });
 });
@@ -47,7 +47,7 @@ router.post('/', middleware.isLoggedIn, function(req, res){
             req.flash('success', message);
             res.redirect('/artpieces/' + artpiece.id);
         }
-    });    
+    });
 });
 
 
